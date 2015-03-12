@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "MBADojo": {
+            "applicationId": "DDPjLz1dIJYsgYXLr7qml3IMpJaWTg7ftjBdamCr", 
+            "masterKey": "TtQHgCx5SzRkWDAeKlNbHC3f1rcDtEJJ4wOlgDnb"
+        }, 
+        "_default": {
+            "link": "MBADojo"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
