@@ -2,7 +2,7 @@ $(function(){
 	Parse.$ = jQuery;
 
 	Parse.initialize("41eTSPf2xqBfPJcQ49luADLkgGmM2ZJ04lkRa3u1","VZGwHtsmQKxJKbZP4WfuB9nOLKmcbcyIsLI8JkfL");
-	var adUrl;
+	var adUrls = [];
 	function getQueryVariable(variable) {
 	    var query = window.location.search.substring(1);
 	    var vars = query.split("&");
@@ -37,6 +37,12 @@ $(function(){
 	adQuery.find({
 	  success: function(results) {
 	    // Do something with the returned Parse.Object values
+	    for (var i = 0; i < results.length; i++) {
+	    	var id = results[i].objectId;
+	    	var imageUrl  = results[i].get('imageFile');
+	    	//adUrls.push({key:"id", value: imageUrl});
+	    	adUrls[i] = imageUrl;
+	    };
 	    var imageUrl = results[0].get('imageFile');
 	   	adUrl = imageUrl.url();
 	    //alert(imageUrl.url());
@@ -90,7 +96,11 @@ $(function(){
 			var adsView = new AdsView({collection:ads});
 			adsView.render();
 			$('.main-container').html(adsView.el);
-			$('.leadImage')[0].src = adUrl;
+			var arr  = $('.leadImage');
+			for (var i = 0; i < arr.length; i++) {
+				var item = adUrls[i];
+				arr[i].src = item.url();
+			};
 		}, 
 		error:function(ads, error){
 			console.log(error);
